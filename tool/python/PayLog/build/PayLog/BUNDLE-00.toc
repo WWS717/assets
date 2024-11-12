@@ -1,0 +1,1 @@
+([('PayLog', '/Users/air/PayLog/dist/PayLog', 'EXECUTABLE')],)

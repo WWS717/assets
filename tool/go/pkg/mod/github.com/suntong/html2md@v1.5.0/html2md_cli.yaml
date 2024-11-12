@@ -1,0 +1,157 @@
+# program name, name for the executable
+ProgramName: html2md
+Authors: Tong Sun
+Since: 2020
+
+PackageName: main
+
+Name: html2md
+Desc: HTML to Markdown
+Text: HTML to Markdown converter on command line
+#NumArg: cli.AtLeast(1)
+NumOption: cli.AtLeast(1)
+
+UsageLead: "Usage:\\n  html2md [Options...]"
+
+
+Options:
+  - Name: Filei
+    Type: '*clix.Reader'
+    Flag: "*i,in"
+    Usage: 'The html/xml file to read from (or stdin)'
+
+  - Name: Domain
+    Type: 'string'
+    Flag: 'd,domain'
+    Usage: "Domain of the web page, needed for links when --in is not url"
+
+  - Name: Sel
+    Type: 'string'
+    Flag: 's,sel'
+    Usage: "CSS/goquery selectors"
+    Value: "body"
+
+  - Name: Excl
+    Type: '[]string'
+    Flag: 'x,excl'
+    Usage: "Excluding CSS/goquery selectors"
+
+  - Name: ExclChildren
+    Type: bool
+    Flag: "xc"
+    Usage: Excluding all children nodes
+
+  - Name: Verbose
+    Type: cli.Counter
+    Flag: v,verbose
+    Usage: "Verbose mode (Multiple -v options increase the verbosity.)\\n"
+
+# Options
+
+  - Name: OptHeadingStyle
+    Type: "string"
+    Flag: "opt-heading-style"
+    Usage: Option HeadingStyle
+
+  - Name: OptHorizontalRule
+    Type: "string"
+    Flag: "opt-horizontal-rule"
+    Usage: Option HorizontalRule
+
+  - Name: OptBulletListMarker
+    Type: "string"
+    Flag: "opt-bullet-list-marker"
+    Usage: Option BulletListMarker
+
+  - Name: OptCodeBlockStyle
+    Type: "string"
+    Flag: "opt-code-block-style"
+    Usage: Option CodeBlockStyle
+
+  - Name: OptFence
+    Type: "string"
+    Flag: "opt-fence"
+    Usage: Option Fence
+
+  - Name: OptEmDelimiter
+    Type: "string"
+    Flag: "opt-em-delimiter"
+    Usage: Option EmDelimiter
+
+  - Name: OptStrongDelimiter
+    Type: "string"
+    Flag: "opt-strong-delimiter"
+    Usage: Option StrongDelimiter
+
+  - Name: OptLinkStyle
+    Type: "string"
+    Flag: "opt-link-style"
+    Usage: Option LinkStyle
+
+  - Name: OptLinkReferenceStyle
+    Type: "string"
+    Flag: "opt-link-reference-style"
+    Usage: "Option LinkReferenceStyle"
+
+  - Name: OptEscapeMode
+    Type: "string"
+    Flag: "opt-escape-mode"
+    Usage: "Option EscapeMode\\n"
+
+
+# Plugins
+
+  - Name: PluginBrToNewline
+    Type: bool
+    Flag: "plugin-br-to-newline"
+    Usage: Plugin BrToNewline
+
+  - Name: PluginConfluenceAttachments
+    Type: bool
+    Flag: "A,plugin-conf-attachment"
+    Usage: Plugin ConfluenceAttachments
+
+  - Name: PluginConfluenceCodeBlock
+    Type: bool
+    Flag: "C,plugin-conf-code"
+    Usage: Plugin ConfluenceCodeBlock
+
+  - Name: PluginFrontMatter
+    Type: bool
+    Flag: "F,plugin-frontmatter"
+    Usage: Plugin FrontMatter
+
+  - Name: PluginGitHubFlavored
+    Type: bool
+    Flag: "G,plugin-gfm"
+    Usage: Plugin GitHubFlavored
+
+  - Name: PluginStrikethrough
+    Type: bool
+    Flag: "S,plugin-strikethrough"
+    Usage: Plugin Strikethrough
+
+  - Name: PluginTable
+    Type: bool
+    Flag: "T,plugin-table"
+    Usage: Plugin Table
+
+  - Name: PluginTableCompat
+    Type: bool
+    Flag: "plugin-table-compat"
+    Usage: Plugin TableCompat
+
+  - Name: PluginTaskListItems
+    Type: bool
+    Flag: "L,plugin-task-list"
+    Usage: Plugin TaskListItems
+
+  - Name: PluginVimeoEmbed
+    Type: bool
+    Flag: "V,plugin-vimeo"
+    Usage: Plugin VimeoEmbed
+
+  - Name: PluginYoutubeEmbed
+    Type: bool
+    Flag: "Y,plugin-youtube"
+    Usage: Plugin YoutubeEmbed

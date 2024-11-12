@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="refresh" content="20">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css"/> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Geolocation API</title>
+    <style>
+        body {
+            text-align: center;
+            background: url("https://ada-asia.com/wp-content/uploads/2020/03/ADA-Location-Planner_Cover-background-1024x640.jpg");
+            background-size: cover;
+        }
+
+        .button {
+            background-color: #4CAF50;
+            /* Green */
+            border: none;
+            color: white;
+            padding: 10px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            transition-duration: 0.4s;
+            cursor: pointer;
+        }
+
+        .button2 {
+            background-color: white;
+            color: black;
+            border: 2px solid green;
+        }
+
+        .button2:hover {
+            background-color: #2BFF00;
+            color: white;
+        }
+    </style>
+    <script src="sweetalert2.all.min.js"></script>
+    <script src="sweetalert2.min.js"></script>
+    <link rel="stylesheet" href="sweetalert2.min.css">
+    <!-- JavaScript -->
+    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+    <!-- CSS -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css" />
+    <!-- Default theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css" />
+    <!-- Default theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.rtl.min.css" />
+</head>
+
+<body>
+    <!-- <h1>Get Your Current location Details</h1>
+    <h2> &#8659; </h2>
+    <button onclick="getlocation()">Get Location Details</button> -->
+    <!-- window.onload =  -->
+    <div id="location"></div>
+    <script>
+        var x = document.getElementById("location");
+        window.onload = function fun() {
+            alertify.confirm("<br><h2 style='color:Blue;'>Press Follwing Button To Get Location Details<h2><button class='button button2' onclick='getlocation()'>Details</button>",
+                function () {
+                    alertify.success('Rsetting in Few Seconds');
+                },
+                function () {
+                    alertify.error('Error');
+                }).set('resizable', true).resizeTo('40%', '55%').setHeader('<em>Welcome to Location Tracker</em>');
+            ;
+        }
+        function getlocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition)
+            }
+            else {
+                alert("<h1>Sorry! We are Unable to Fetch your Loation at this time. </h1>")
+            }
+        }
+        function showPosition(position) {
+            alertify.confirm("<h2 style='color:blue;'> ✨ Your current location is ✨ </h2><h3 style='color:blue;'>🧿 Latitude 🧿" + "</h3><h3 style='color:red;'>"+ position.coords.latitude  + "</h3><h3 style='color:blue;'>🧿 Longitude 🧿" + "</h3><h3 style='color:red;'>" + position.coords.longitude+ "</h3><a href='https://www.latlong.net/c/?lat=" + position.coords.latitude + "&long=" + position.coords.longitude + "' target='_blank'><button class='button button2'>Get Map View</button></a>",
+                function () {
+                    alertify.success('Location Data Shown Successfully');
+                },
+                function () {
+                    alertify.error('Error');
+                }).set('resizable', true).resizeTo('40%', '70%');
+        }
+    </script>
+</body>
+
+</html>

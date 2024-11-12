@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  {% block title %}A Simple To-Do App.{% endblock %}
+{% endblock %}
+
+{% block content %}
+    <header class="header">
+      <h1>ImNext</h1>
+      {% if g.user %}
+        <form class="new-todo" method="post" action='/add'>
+          <input class="new-todo" type="text" id='add' name='add' placeholder="What needs to be done?" required>
+          <!-- <input type="submit" name="addButton" value="Add"> -->
+        </form>
+    </header>
+
+    <section class="actions">
+      <button type="button" onclick="alert('Edit then press Enter.')">EDIT</button>
+      <button type="button" onclick="alert('Marked as Completed')">MARK AS COMPLETED</button>
+      <button type="button" onclick="alert('Deleted!')">DELETE</button>
+    </section>
+
+    <section class="main">
+      <ul class="todo-list">
+        {% for todo in todos %}
+        <li class="{{ "completed" if todo['completed'] }}">
+        <input type="checkbox" name="" value="">
+        {{ todo['description'] }}
+        </li>
+      {% endfor %}
+      </ul>
+    </section>
+    {% else %}
+    <section class="intro">
+      <p>ImNext is a simple To-Do application to help you stay organized and manage your day-to-day.
+        You can use this app to make shopping lists or task lists so that you can increase your productivity and focus on what matters to you.</p>
+    </section>
+    {% endif %}
+
+{% endblock %}

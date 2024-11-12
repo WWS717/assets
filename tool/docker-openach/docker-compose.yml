@@ -1,0 +1,27 @@
+version: "2"
+
+services:
+  web:
+    image: openach/openach:latest
+    volumes:
+      - ./runtime:/home/www/openach/protected/runtime
+      - ./config:/home/www/openach/protected/config
+      - ./ssl/openach:/etc/ssl/openach
+    ports:
+      - "80:80"
+      - "443:443"
+    expose:
+      - "80"
+      - "443"
+
+  cli:
+    image: openach/openach:latest
+    volumes:
+      - ./runtime:/home/www/openach/protected/runtime
+      - ./config:/home/www/openach/protected/config
+      - ./ssl/openach:/etc/ssl/openach
+    entrypoint: "/home/www/openach/protected/openach"
+    command: "help"
+
+
+

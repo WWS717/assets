@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <!-- Character Encoding -->
+    <meta charset="utf-8">
+    <!-- Meta for Microsoft Edge Browser -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- @media Breakpoints -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Search Engines Algorithms -->
+    <meta name="author" content="Julio Pochet Edmead & Nathan Weiler">
+    <meta name="description" content="Flask To-Do App for the class CSET-160: Web Development II "/>
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon_io-1/favicon.ico') }}" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='favicon_io-1/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='favicon_io-1/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='favicon_io-1/favicon-16x16.png') }}">
+    <link rel="manifest" href="{{ url_for('static', filename='favicon_io-1/site.webmanifest') }}">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
+    <!-- CSS stylesheet -->
+    <link rel="stylesheet" href="{{ url_for("static", filename="style.css") }}">
+    <title>ImNext - {% block title %}{% endblock %}</title>
+    </head>
+  <body>
+
+  <nav class="top">
+    <ul>
+      {% if g.user %}
+        <li><span>{{ g.user['email'] }}</span>
+        <li><a href="{{ url_for('todos.profile') }}">Edit Profile</a>
+        <li><a href="{{ url_for('auth.logout') }}">Log Out</a>
+      {% else %}
+        <li><a href="{{ url_for('auth.register') }}">Register</a>
+        <li><a href="{{ url_for('auth.login') }}">Log In</a>
+      {% endif %}
+    </ul>
+  </nav>
+
+    <section class="todoapp">
+    {% block content %}
+    {% endblock %}
+    <footer class="footer">
+      <marquee><span>&#169; Copyright <time datetime='2020-03-31 22:05-0800'>2020</time>&nbsp;by Julio Pochet Edmead &amp; Nathan Weiler. All rights reserved.</span></marquee>
+    </footer>
+    </section>
+  </body>
+</html>

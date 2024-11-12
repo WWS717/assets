@@ -1,0 +1,184 @@
+<!doctype html>
+<html>
+    <head>
+        <title id="header-title"></title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <link rel="icon" type="image/png" href="./favicon.png" />
+        <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap-switch-button@1.1.0/css/bootstrap-switch-button.min.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap-switch-button@1.1.0/dist/bootstrap-switch-button.min.js"></script>
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+        <link
+            rel="stylesheet"
+            href="https://pyscript.net/latest/pyscript.css"
+        />
+        <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+        <style>
+            html, body {
+                margin: 0;
+                height: 100%;
+            }
+            .navbar{
+                height:10%;
+                background: linear-gradient(96.9deg, rgb(80, 255, 207) 10.5%, rgb(22, 185, 255) 74.4%);
+                justify-content: center;
+            }
+            .title{
+                font-size: 125%;
+                font-size: xx-large;
+            }
+            /* .app-header{
+                padding-top: 1.%;
+            } */
+            .container{
+                padding-top: 2%;
+            }
+            .form-group {
+                margin-bottom: 20px;
+            }
+            .switch{
+                padding-left: 20%;
+            }
+            .btn-light:hover{
+                color: red;
+                background-color: lime;
+            }
+            .btn-light{
+                font-size: 18px;
+                font-weight: 500;
+            }
+            .btn-primary{
+                font-size: 18px;
+                font-weight: 500;
+            }
+            .all_labels{
+                color: black;
+                font-size: 20px;
+                font-weight: 600;
+            }
+        </style>
+    </head>
+
+    <body>
+        <py-config>
+            packages = ["numpy","scikit-learn"]
+            [[fetch]]
+            files = ["./model.sav"]
+        </py-config>
+        <py-script>
+            import pickle
+            import numpy as np
+            import warnings
+            warnings.filterwarnings("ignore")
+
+            loaded_model = pickle.load(open('model.sav', 'rb'))
+
+            def predict(rfcm,inputs):
+                output = rfcm.predict(inputs.reshape(1, -1))[0]
+                return output
+
+            d=dict(zip([0,1,2,3,4],['DrugY','drugA','drugB','drugC','drugX']))
+
+            def give_pred():
+                if(js.checkme()==1):
+                    input_list=[
+                        Element('age').element.value,
+                        Element('sex').element.value,
+                        Element('bp').element.value,
+                        Element('cholesterol').element.value,
+                        Element('naToK').element.value
+                    ]
+                    # print(d[predict(loaded_model,np.array([47,1,1,0,10.114]))])
+                    js.call_me(d[predict(loaded_model,np.array(input_list))])
+                    # js.call_me(input_list)
+        </py-script>
+        <py-terminal style="display:none;visibility:hidden;"></py-terminal>
+        <nav class="navbar">
+            <div class="app-header">
+                <a class="title">✨</a>
+                <a class="title" href="" > Welcome To Drug Classifiction Project </a>
+                <a class="title">✨</a>
+            </div>
+        </nav>
+        <div class="container">
+            <form onsubmit="return false">
+                <div class="form-group">
+                    <label class="all_labels" id="change_age" for="age"><i class="fa fa-spinner fa-spin" style="color: red;"></i> Age</label>
+                    <input type="number" oninput="changeIcon('change_age','Age')" class="form-control" id="age" name="age" required>
+                </div>
+
+                <div class="form-group its_gender">
+                    <label class="switch-label all_labels" id="change_gender" for="sex"><i class="fa fa-spinner fa-spin" style="color: red;"></i> Gender</label>
+                    <div class="switch">
+                        <input type="checkbox" id='sex' name="sex" value='1' data-toggle="switchbutton" style="font-size: 30px;" checked data-onlabel="<i class='fa fa-male' style='font-size: 20px;'></i> Male" data-offlabel="<i class='fa fa-female' style='color:red;font-size: 20px;'></i> Female">
+                    </div>
+                </div>                
+        
+                <div class="form-group">
+                    <label class="all_labels" for="bp" id="change_bp"><i class="fa fa-spinner fa-spin" style="color: red;"></i> Blood Pressure Levels (BP)</label>
+                    <select class="form-control" id="bp" name="bp" onclick="changeIcon('change_bp','Blood Pressure Levels (BP)')">
+                        <option value="0">High</option> 
+                        <option value="1">Low</option>
+                        <option value="2">Normal</option>
+                    </select>
+                </div>
+        
+                <div class="form-group">
+                    <label class="all_labels" for="cholesterol" id="change_cholesterol"><i class="fa fa-spinner fa-spin" style="color: red;"></i> Cholesterol Levels </label>
+                    <select class="form-control" id="cholesterol" name="cholesterol" onclick="changeIcon('change_cholesterol','Cholesterol Levels')">
+                        <option value="0">High</option>
+                        <option value="1">Normal</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="all_labels" for="naToK" id="change_naTok"><i class="fa fa-spinner fa-spin" style="color: red;"></i> Na to Potassium Ratio</label>
+                    <input type="number" step="0.001" min="0" oninput="changeIcon('change_naTok','Na to Potassium Ratio')" class="form-control" id="naToK" name="naToK" required>
+                </div>
+        
+                <button type="submit" py-click="give_pred()" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+        <script>
+                document.getElementById('sex').addEventListener('change', function() {
+                    var isChecked = this.checked;
+                    if (isChecked) {
+                        this.value=1;
+                    } else {
+                        this.value=0;
+                    }
+                    changeIcon('change_gender','Gender')
+                });
+                function changeIcon(id,para) {
+                        document.getElementById(id).style.color = "lime";
+                        document.getElementById(id).innerHTML = "<i class='fa fa-check-square-o' style='color: lime;'></i> "+para;
+                }
+
+                function checkme() {
+                    var ch=1;
+                    var age = document.getElementById('age').value;
+                    var naToK = document.getElementById('naToK').value;
+                    if (age < 1 || age > 100 || isNaN(age)) {
+                        alert('Please enter a valid age.');
+                        ch=0;
+                    }
+                    else if (naToK <= 0 || isNaN(age)) {
+                        alert('Please enter a valid Na to Potassium Ratio.');
+                        ch=0;
+                    }
+                    return ch;
+                }
+
+                function call_me(para){
+                    alertify.alert('<h4 style="color:blue;">🚀 Drug Classififcation Report ⛄</h4>', '<h5 style="color:lime;">✅ Drug type for the patient is :- '+ para +'</h5>', function(){ alertify.success('<h6>✅ Thank You 😎😎😎</h6>'); });
+                }
+        </script>
+        
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    </body>
+</html>

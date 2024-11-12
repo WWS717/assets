@@ -1,0 +1,118 @@
+{
+  "files": [
+    "README.md",
+    "README.beg.e.md",
+    "README.end2.e.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "suntong",
+      "name": "suntong",
+      "avatar_url": "https://avatars.githubusercontent.com/u/422244?v=4",
+      "profile": "https://github.com/suntong",
+      "contributions": [
+        "code",
+        "ideas",
+        "design",
+        "data",
+        "test",
+        "bug",
+        "doc",
+        "blog",
+        "example",
+        "tutorial",
+        "tool",
+        "platform",
+        "review",
+        "question",
+        "maintenance",
+        "infra"
+      ]
+    },
+    {
+      "login": "VPanteleev-S7",
+      "name": "VPanteleev-S7",
+      "avatar_url": "https://avatars.githubusercontent.com/u/108007295?v=4",
+      "profile": "https://github.com/VPanteleev-S7",
+      "contributions": [
+        "code",
+        "bug",
+        "userTesting"
+      ]
+    },
+    {
+      "login": "itdoginfo",
+      "name": "itdoginfo",
+      "avatar_url": "https://avatars.githubusercontent.com/u/11143109?v=4",
+      "profile": "https://github.com/itdoginfo",
+      "contributions": [
+        "bug",
+        "userTesting"
+      ]
+    },
+    {
+      "login": "m040601",
+      "name": "somename123",
+      "avatar_url": "https://avatars.githubusercontent.com/u/8886?v=4",
+      "profile": "http://someurl1.comm",
+      "contributions": [
+        "bug",
+        "ideas",
+        "userTesting"
+      ]
+    },
+    {
+      "login": "vivook",
+      "name": "vivook",
+      "avatar_url": "https://avatars.githubusercontent.com/u/24224102?v=4",
+      "profile": "https://github.com/vivook",
+      "contributions": [
+        "bug",
+        "userTesting"
+      ]
+    },
+    {
+      "login": "097115",
+      "name": "097115",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1415155?v=4",
+      "profile": "https://github.com/097115",
+      "contributions": [
+        "bug",
+        "ideas",
+        "userTesting"
+      ]
+    },
+    {
+      "login": "magnusviri",
+      "name": "James Reynolds",
+      "avatar_url": "https://avatars.githubusercontent.com/u/711269?v=4",
+      "profile": "http://magnusviri.com",
+      "contributions": [
+        "review",
+        "talk",
+        "userTesting"
+      ]
+    },
+    {
+      "login": "ImportTaste",
+      "name": "ImportTaste",
+      "avatar_url": "https://avatars.githubusercontent.com/u/53661808?v=4",
+      "profile": "https://github.com/ImportTaste",
+      "contributions": [
+        "code",
+        "bug",
+        "userTesting"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "html2md",
+  "projectOwner": "suntong",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true,
+  "commitConvention": "angular",
+  "commitType": "docs"
+}

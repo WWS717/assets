@@ -29,7 +29,7 @@ Cython==0.29.33
 defusedxml==0.7.1
 dill==0.3.7
 distlib==0.3.8
-Django==5.1.1
+Django==5.1.4
 django-dotenv==1.4.2
 dm-tree==0.1.8
 fastapi==0.115.2
